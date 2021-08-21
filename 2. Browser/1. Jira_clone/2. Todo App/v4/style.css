@@ -1,0 +1,122 @@
+/* * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  font-family: "Indie Flower", cursive;
+  min-height: 100vh;
+  background-color: #15314b;
+  color: white;
+}
+
+.input-container {
+  margin-bottom: 2rem;
+  height: 20vh;
+  padding-top: 5vh;
+}
+
+.task-container {
+  min-height: calc(80vh - 2rem);
+}
+
+form {
+  width: 40%;
+  margin: auto;
+  height: 10vh;
+}
+
+input {
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  outline: none;
+  height: 100%;
+  font-family: "Indie Flower", cursive;
+}
+
+ul {
+  width: 40%;
+  margin: auto;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+  height: 3rem;
+  text-align: center;
+  padding-top: 0.6rem;
+  font-size: 1.4rem;
+  background-color: #02203c;
+}
+
+.instruction {
+  text-align: center;
+}
+
+ */
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  background-color: #15314b;
+  color: white;
+}
+
+.input-container {
+  padding-top: 20px;
+  height: 20vh;
+}
+
+.task-container {
+  min-height: 80vh;
+}
+
+.task-input {
+  font-family: "Indie Flower", cursive;
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  height: 4rem;
+  width: 30%;
+}
+
+.instruction,
+.tasklist-item {
+  font-family: "Indie Flower", cursive;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.task-list {
+  padding: 0;
+  padding-top: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.tasklist-item {
+  list-style: none;
+  background-color: #02203c;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .task-list,
+  .task-input {
+    width: 70%;
+  }
+}

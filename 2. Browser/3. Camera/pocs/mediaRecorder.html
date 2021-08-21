@@ -1,0 +1,104 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 - Overview -->
+<!-- In this POC we will see how we can record the video input captured through camera and mic. To do so we have brought over the code from mediaDevices POC and will be improving on it. We have also removed audio element and its references as we will be working with video only  -->
+
+<!-- C1 -->
+<!-- Steps involved:
+
+1- Remove audio element and its references from the script, add a button with id 'record-video', store the reference of this button in the script
+2- In script create few variables mediaRecorder (this will store MediaRecorder object later explained), chunks and initialise it to empty array and recordState, which is initially set to false
+3- In the then function create a MediaRecorder object, give it the mediaStream object and save that instance in the variable created in step 2
+4- On mediaRecorder attach 2 event handlers, 
+    a-  ondataavaiable => this will collect all the data that is coming from mediastream
+    b-  onstop => this will save all the collected data in file which will be saved to our disk
+5- Attach an click event handler to the button which on click will toggle the recordState and start/stop the recording  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera and mic</title>
+  </head>
+  <body>
+    <video autoplay controls></video>
+    <button id="record-video">Record</button>
+    <script>
+      let constraints = { video: true, audio: true };
+
+      let videoPlayer = document.querySelector("video");
+      let vidRecordBtn = document.querySelector("#record-video");
+
+      let mediaRecorder;
+      let chunks = [];
+      let recordState = false;
+
+      //   C7
+
+      //Attach click event handler on vid_RecordBtn
+
+      vidRecordBtn.addEventListener("click", function () {
+        //if record state is false make it true and start recording
+        if (!recordState) {
+          recordState = true;
+          mediaRecorder.start();
+          vidRecordBtn.innerText = "Recording...";
+        } else {
+          //else make record state false and stop recording
+          recordState = false;
+          mediaRecorder.stop();
+          vidRecordBtn.innerText = "Record";
+        }
+      });
+
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function (mediaStream) {
+          videoPlayer.srcObject = mediaStream;
+
+          //   C2
+
+          //   The MediaRecorder interface of the MediaStream Recording API provides functionality to easily record media.  It is created using the MediaRecorder() constructor, which takes mediaStream object
+
+          mediaRecorder = new MediaRecorder(mediaStream);
+
+          //   C3
+
+          // mediaRecorder has 2 imp events =>
+          //             a- ondataavailable invoked when mediaRecorder get data from mediaStream after it starts recording
+          //             b- onstop invoked when mediaRecorder stops recording
+
+          mediaRecorder.ondataavailable = function (e) {
+            // C4
+            // Here we are just pushing the chunks of data coming from mediaStream passed to this mediaRecorder
+            chunks.push(e.data);
+          };
+          
+          mediaRecorder.onstop = function () {
+            // C5
+            
+            // The Blob object represents a blob, which is a file-like object of immutable, raw data
+
+            // Here we are creating a new blob using the chunks of data, also setting what kind of file is present in blob which here is a video file
+            let blob = new Blob(chunks, { type: "video/mp4" });
+            //also remember to empty the chunks array so the new video can start from fresh
+            chunks = [];
+
+            //create a url for the blob object
+            var blobUrl = URL.createObjectURL(blob);
+
+            // C6
+
+            // download the video using the link attached to an anchor tag and clicking it
+            var link = document.createElement("a");
+            link.href = blobUrl;
+            link.download = "video.mp4";
+            link.click();
+            link.remove();
+          };
+        });
+    </script>
+  </body>
+</html>

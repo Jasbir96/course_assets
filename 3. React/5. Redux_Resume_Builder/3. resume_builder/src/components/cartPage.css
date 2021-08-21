@@ -1,0 +1,21 @@
+.cart-parent{
+    display:flex;
+    justify-content: space-around;
+}
+.cart_products-container{
+width:80%;
+}
+.summary_container{
+height:100%;
+}
+.product-container{
+    display:flex;
+    justify-content:space-between;
+}
+.product-img{
+    width:30%
+}
+.product-desc{
+    width:60%;
+}
+

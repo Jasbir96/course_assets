@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px solid;
+      }
+      .d1 {
+        height: 200px;
+        width: 200px;
+      }
+      .d2 {
+        height: 20vh;
+        width: 20vw;
+      }
+      .d3{
+          height: 400px;
+          width: 400px;
+      }
+      .d4{
+          border: dashed;
+          height: 50%;
+          width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>rem,vh,vw,px,%</h1>
+    <hr />
+    <p>200px</p>
+    <p>
+      This div will always occupy 200px x 200px no matter how you change shape
+      and size of browser
+    </p>
+    <div class="d1"></div>
+    <hr />
+    <p>20vh and 20vw</p>
+    <p>
+      The v in vw and vh stands for viewport, which is user's visible area of a
+      web page. h in vh stands for height and w in vw stands for width.So when
+      we say 20vw and 20vh, the div will occupy 20% of the user's visible area
+      of web page. That means if you change shape and size of browser the size
+      of div will also change.
+    </p>
+    <div class="d2"></div>
+    <hr>
+    <p>50% of my parent</p>
+    <p>We can give sizes in terms of percentage, in that case the current element to which we are applying css rule will look to its parent and get x% of its parents size. This is also called inheritance and can also be seen in fonts.</p>
+    <div class="d3">
+        <div class="d4"></div>
+    </div>
+  </body>
+</html>

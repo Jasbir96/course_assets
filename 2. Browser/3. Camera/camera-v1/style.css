@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* C4.2  */
+#record-video {
+  /* the video element is going to cover entire screen so we have removed this button from normal flow by position fixed  */
+  position: fixed;
+  right: 6rem;
+  top: 36vh;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: none;
+}
+
+/* C4.3 */
+/* Similarly for capture btn */
+#click-picture {
+  position: fixed;
+  right: 6rem;
+  top: 50vh;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: none;
+}
+
+
+/* C4.5 */
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  /* when we give video element 100% height and width of its parent so it overflow and hence overflow hidden; */
+  overflow: hidden;
+  background-color: black;
+}
+video{
+    height: 100%;
+    width: 100%;
+}

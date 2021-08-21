@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#record-video {
+  position: fixed;
+  right: 6rem;
+  top: 36vh;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: 8px solid white;
+  background: black;
+}
+
+#click-picture {
+  position: fixed;
+  right: 6rem;
+  top: 50vh;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: 8px solid white;
+  background: black;
+}
+
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: black;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}
+
+#record-div,
+#click-div {
+  height: 70%;
+  width: 80%;
+  margin: auto;
+  border-radius: 50%;
+}
+
+#record-div {
+  background: red;
+}
+
+#click-div {
+  background: white;
+}
+
+.recording-animation {
+  animation: shrinkInOut 0.8s infinite;
+}
+
+.capture-animation {
+  animation: shrinkInOut 1s;
+}
+
+@keyframes shrinkInOut {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.filter-container {
+  border: 1px solid white;
+  top: 12vh;
+  height: 60vh;
+  width: 5.5vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 5.3vw;
+}
+
+.filter {
+  border: 1px solid white;
+  height: 20%;
+  background: url(https://images.unsplash.com/photo-1591526038358-0e3d334fb8c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100);
+  background-blend-mode: color-burn;
+  background-size: cover;
+}
+
+/* C3 */
+#record-video,
+#click-picture,
+.filter-container {
+  z-index: 3;
+}

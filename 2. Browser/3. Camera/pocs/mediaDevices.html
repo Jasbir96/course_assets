@@ -1,0 +1,57 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this POC we will see how we can get access of user's camera and mic and use that to display video and audio captured by those media devices. Basic html and JS is only used.  -->
+
+<!-- C1 -->
+<!-- Steps involved:
+
+
+
+1- Create html with 2 main elements for this (video and audio element) add controls to them
+2- Create a script which first store references to those elements and ask for user media permission using getUserMedia(), if allowed you'll receive a mediastream object, it will contain audio and video tracks 
+3- Use this object to set the srcObject of audio and video elements, now the autoplay was important because we want to media to be played at the same time it is captured by media devices.  
+4- Lastly add autoplay to them.-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera and mic</title>
+    <style>
+      video {
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay controls></video>
+    <audio autoplay controls></audio>
+    <script>
+      // C2.0
+      // This object is used to filter the type of media we want as input
+      let constraints = { video: true, audio: true };
+
+      let audioPlayer = document.querySelector("audio");
+      let videoPlayer = document.querySelector("video");
+      // C2.1
+      // getUserMedia() asks user for permission to use a media . It gives a MediaStream with tracks depending on constraints object.
+
+      // C2.2
+      // It returns a Promise that resolves to a MediaStream object. If the user denies permission, or matching media is not available, then the promise is rejected with NotAllowedError or NotFoundError respectively.
+
+      // C3.0
+      // navigator is an object given to us by browser
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function (mediaStream) {
+          // C3.1 
+          // Once the user gives permission to use camera and mic, you will get a mediastream object. Set that object as source to the audio video element
+          audioPlayer.srcObject = mediaStream;
+          videoPlayer.srcObject = mediaStream;
+        });
+    </script>
+  </body>
+</html>

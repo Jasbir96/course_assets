@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- optimized code for manipulating -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- actual changes -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- JSX -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Counter extends React.Component {
+            // hidden
+            constructor() {
+                super();
+                this.state = {
+                    count: 0
+                }
+            }
+            increment = () => {
+                this.setState({
+                    count: this.state.count + 1
+                })
+                // console.log(this.state);
+            }
+            render() {
+                return (
+                    <React.Fragment>
+                        <h1 >Hello {this.state.count}</h1>
+                        <button onClick={this.increment}>Click </button>
+                    </React.Fragment>
+                )
+            }
+        }
+        function Counters() {
+            return (
+                <React.Fragment>
+                    <Counter/>
+                    <Counter/>
+                    <Counter/>
+                    <Counter/>
+                    <Counter/>
+                    <Counter/>
+                </React.Fragment>
+            )
+        }
+
+        ReactDOM.render(<Counters></Counters>, document.getElementById("root"));
+    </script>
+</body>
+
+<!-- Convert a the app into componenets -->
+<!-- create a static component -->
+<!-- create states for 
+    the variables that are going to change in future -->
+<!-- event listner add where you want to change -->
+
+</html>

@@ -1,0 +1,11 @@
+Q- using generators write a function that in theory can run an infinite for loop
+Solution:
+function *reachInfinity(){
+    for(let i = 1;true;i++){
+        yield(i);
+    }
+}
+let f =  reachInfinity()
+
+console.log(f.next());
+console.log(f.next());

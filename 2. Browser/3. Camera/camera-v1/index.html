@@ -1,0 +1,37 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this version of camera we will make a simple app that clicks photos and record videos and save them directly to your disk -->
+
+<!-- C1 -->
+<!-- Steps involved: -->
+<!-- 1- Copy all the code from mediaRecorder poc as it already has a video recorder code. Now get the script out in a separate file.
+
+2- Add a button in html with id click-picture, get its reference in JS, add a click eventlistener on this. On click of this button we will click pictures. 
+
+3- Create a function "capture" which captures the at the moment image of its video track (getting from video element in the html) using canvas api. Attach this function to click event handler of captureBtn 
+
+4- Since the functionality is done all we have to do is style it. So add an external CSS style sheet.
+    a- Add styles for buttons
+    b- Now for video we have to do something different, first we need to add a video container div in our html, also remove controls from video element, then make that container 100vh and 100vw, make its background black and then make the video element get its parent height and width (the reason for this is explained is css comments) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera - v1</title>
+    <!-- C4.1 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- C4.4  -->
+    <div class="video-container">
+      <video autoplay></video>
+    </div>
+    <button id="record-video">Record</button>
+    <!-- C2.1  -->
+    <button id="click-picture">Click</button>
+    <script src="script.js"></script>
+  </body>
+</html>

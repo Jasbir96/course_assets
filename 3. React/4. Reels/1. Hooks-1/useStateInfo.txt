@@ -1,0 +1,158 @@
+import React, { useState } from 'react'; -< import statement
+
+///////////usinng class component declare a single state object
+import React from 'react';
+
+class Message extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+      list: [],    
+    };
+  }
+  /* ... */
+}
+
+//////////////using useState in functional component
+
+import React, { useState } from 'react';
+
+const Message= () => {
+   const [messageState,setMessage] = useState('');
+   const [listState,setList] = useState( [] );
+}
+const[count,setCount] = useState(0);
+setCount(count+1);
+setCount(pcount=>
+  pcount+1
+)
+///////////using previous state to update current state
+const Message = () => {
+  const [flag, setFlag] = useState(true);
+  return (
+    <div>
+      <p>{flag}</p>
+      <button onClick=setFlag(prevFlag=>!prevFlag)>Toggle</button>     
+    </div>
+  );
+};
+
+//Explanation for above
+
+Reason is setState is asynchronous, you can't expect the updated state value just after the setState, if you want
+ to check the value use a callback method. Pass a method as callback that will be get executed after the setState
+  complete its task.
+Why setState is asynchronous ?
+This is because setState alters the state and causes re rendering. This can be an expensive operation and making it 
+synchronous might leave the browser unresponsive. Thus the setState calls are asynchronous as well as batched for 
+better UI experience and performance.
+
+From Doc:
+
+setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state 
+after calling this method can potentially return the existing value. There is no guarantee of synchronous
+ operation of calls to setState and calls may be batched for performance gains.
+
+
+
+//Using Objects with useState
+ There are two things you need to keep in mind about updates when using objects:
+
+- The importance of immutability
+- And the fact that the setter returned by useState doesn’t merge objects like setState() does in class components
+
+About the first point, if you use the same value as the current state to update the state (React uses Object.is 
+for comparing), React won’t trigger a re-render.
+
+Object.is=>
+Object.is() determines whether two values are the same value. Two values are the same if one of the following holds:
+
+both undefined
+both null
+both true or both false
+both strings of the same length with the same characters in the same order
+both the same object (meaning both values reference the same object in memory)
+both numbers and
+both +0
+both -0
+both NaN
+or both non-zero and both not NaN and both have the same value
+This is not the same as being equal according to the == operator. The == operator applies various coercions to both
+ sides (if they are not the same Type) before testing for equality (resulting in such behavior as "" == false being
+  true), but Object.is doesn't coerce either value.
+
+
+  Due to above reasons the following code will not cause a re render
+
+
+  const Message = () => {
+  const [messageObj, setMessage] = useState({ message: '' });
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={messageObj.message}
+        placeholder="Enter a message"
+        onChange={e => {
+          messageObj.message = e.target.value;
+          setMessage(messageObj); // Doesn't work
+        }}
+      />
+      <p>
+        <strong>{messageObj.message}</strong>
+      </p>
+  </div>
+  );
+};
+
+
+Instead of creating a new object, the above example mutates the existing state object. To React, that’s the same object.
+To make it work, we must create a new object
+
+
+
+/////////////////////////////////////////////////////////////////////////
+When you update a state variable, unlike this.setState in a class component, the function returned by useState does not 
+automatically merge update objects, it replaces them.
+
+const Message = () => {
+  const [messageObj, setMessage] = useState({ message: '', id: 1 });
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={messageObj.message}
+        placeholder="Enter a message"
+        onChange={e => {
+          const newMessageObj = { message: e.target.value };
+          setMessage(newMessageObj); 
+        }}
+      />
+      <p>
+        <strong>{messageObj.id} : {messageObj.message}</strong>
+      </p>
+  </div>
+  );
+};
+
+And we only update the message property like in the above example, React will replace the original state object:
+
+{ message: '', id: 1 }
+
+With the object used in the onChange event, which only contains the message property:
+
+{ message: 'message entered' } // id property is lost
+
+You can replicate the behavior of setState() by using the function argument that contains the object to be replaced and the object 
+spread syntax:
+
+onChange={e => {
+  const val = e.target.value;
+  setMessage(prevState => {
+    return { ...prevState, message: val }
+  });
+}}
+The ...prevState part will get all of the properties of the object and the message: val part will overwrite the message property.

@@ -1,0 +1,24 @@
+// Create a trap for the following object so private data cannot be accessed 
+
+let userObj = {
+    private:{
+        dob:"12/3/4"
+    },
+    public:{
+        name:"Anas"
+    }
+}
+Solution:
+let handler = {
+    get:function (target,prop,receiver) {
+        if(prop==="private")
+        return "Access not granted"
+        else
+         return Reflect.get(...arguments);
+    }
+}
+
+let p = new Proxy(userObj,handler)
+
+console.log(p.private);
+console.log(p.public);

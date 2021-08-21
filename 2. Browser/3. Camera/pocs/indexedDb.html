@@ -1,0 +1,126 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this POC we will see learn to use IndexedDB. IndexedDb is NOSQL & asynchronous. Before going through code look at event cycle diagram  -->
+
+<!-- C1 -->
+
+<!-- Steps involved:
+1-  Create 2 inputs 
+    a- For DB name of type text, give it id txtDB 
+    b- For DB version of type number, give it id vBD
+
+    Create 2 buttons and give them id createDb and addNote, in script create a global variable called db and reference these buttons in JS.
+2- Now create a function called createDb, it will get the values of both input tags and create a db using indexed database of given database name and version. Attach click event listener of createBtn and call createDb function there.
+
+3- Create another function called addNote. This will open a transaction to our indexedDb databse. A transaction is a way to perform CRUD with our indexedDb database. And inside this function we will use transaction to add data to our database. Remember in our createDb function we created a database called notes and inside that database we created a table or an objectStore also called notes. Now in this function we will stores notes to this objectStore. Attach click event listener of addBtn and call addNote function there.
+
+4- Last step is to create a function through which we can view our Notes. We will add this function to onsuccess method.-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- C2.1  -->
+    Name
+    <input type="text" value="Sample" id="txtDB" />
+    Version
+    <input type="number" value="1" id="vDB" />
+    <button id="createDb">Create</button>
+    <button id="addNote">Add Note</button>
+  </head>
+  <script>
+    // C2.2
+    let db;
+    let createBtn = document.querySelector("#createDb");
+    let addBtn = document.querySelector("#addNote");
+
+    // C3.4
+    createBtn.addEventListener("click", function () {
+      createDb();
+    });
+
+    // C4.2
+    addBtn.addEventListener("click", function () {
+      addNote();
+    });
+
+    // C4.1
+    function addNote() {
+      //  We are always adding the same note so after adding once it will not do anything no matter how many time we click on add button
+      let note = {
+        nId: "4afty23",
+        txt: "Yes a note",
+      };
+
+      // This is a transaction.
+      // transaction("storeName","modeOfTransaction")
+      // this opens a transaction
+      // this transaction is a request you can add event listener to it
+      let tx = db.transaction("notes", "readwrite");
+
+      // Using this transaction we get the required store
+      let notesStore = tx.objectStore("notes");
+
+      // Using that store we can add the data (this is also a request)
+      notesStore.add(note);
+    }
+
+    // C3.1
+    function createDb() {
+      let dbN = document.getElementById("txtDB").value;
+      let v = document.getElementById("vDB").value;
+      let request = indexedDB.open(dbN, v); //can omit the version will become 1
+
+      // C3.2
+      //  We can access the database as request.result in success as well as upgrade handler
+
+      request.onsuccess = function (e) {
+        db = request.result;
+        alert("Success");
+        // C5.2 
+        viewNotes()
+      };
+
+      request.onerror = function (e) {
+        alert("err");
+      };
+
+      request.onupgradeneeded = function (e) {
+        db = request.result;
+        //   C3.3
+        //ObjectStore is like a table in sql database
+        // we can only create object store in upgrade
+        //So whenever we create a new "table" we have to change the version number so that update can be called
+        //ketPath is the unique id which is required for each entry in this "table"
+        //keyPath can be anything not just id
+        db.createObjectStore("notes", { keyPath: "nId" });
+        // The name of this "table" is notes
+        // every objectstore just has 2 columns => key here it will be nId and value which is an object which will contain our data
+        alert("upgrade");
+      };
+    }
+  
+    // C5.1 
+   function viewNotes() {
+        let tx = db.transaction("notes", "readonly");
+        let notes = tx.objectStore("notes");
+        let req = notes.openCursor(); //also a request
+        req.onsuccess = function (e) {
+          let cursor = req.result;
+          if (cursor) {
+            //do something with cursor
+            console.log(cursor.value);
+            //this again calls the req.onsuccess
+            //with the next object
+            cursor.continue();
+          }
+        };
+      }
+  
+  </script>
+  <body></body>
+</html>

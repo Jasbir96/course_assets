@@ -1,0 +1,44 @@
+
+/* setup no need to explain  */
+body {
+  margin: 0;
+}
+
+.container {
+  background-color: #15314b;
+  color: white;
+}
+
+.container,
+.input-container,
+.task-container {
+  border: 1px solid;
+}
+
+.input-container {
+  height: 20vh;
+}
+
+.task-container {
+  height: 80vh;
+}
+
+.task-input {
+  font-family: "Indie Flower", cursive;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 30%;
+}
+
+.instruction,
+.tasklist-item {
+  font-family: "Indie Flower", cursive;
+  font-size: 1.5rem;
+}
+
+.tasklist-item {
+  list-style: none;
+  background-color: #02203c;
+  width: 40%;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- optimized code for manipulating -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- actual changes -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- JSX -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Hello({ name = "Default" }) {
+            return <h1 >Hello {name}</h1>
+        }
+        function Hellos() {
+            return (
+                <React.Fragment>
+                    <Hello name="Jasbir"></Hello>
+                    <Hello name="Tushar"></Hello>
+                    <Hello name="Bhavesh"></Hello>
+                    <Hello></Hello>
+                    <Hello></Hello>
+                </React.Fragment>
+            )
+        }
+        ReactDOM.render(<Hellos></Hellos>, document.getElementById("root"));
+    </script>
+</body>
+
+</html>

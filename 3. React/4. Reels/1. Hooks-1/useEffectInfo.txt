@@ -1,0 +1,35 @@
+With useEffect, you invoke side effects from within functional components
+
+Side effects:
+Fetching data
+Reading from local storage
+Registering and deregistering event listeners
+
+
+
+effects defined with useEffect are invoked after render. To be more specific, it runs both after the first render
+ and after every update. In contrast to lifecycle methods, effects don’t block the UI because 
+ they run asynchronously.
+
+ //Signature
+ useEffect(
+    () => {
+        // execute side effect
+    },
+    // optional dependency array
+    [
+        // 0 or more entries
+    ] 
+)
+
+////////switch to demos to show useEffect without second argument
+
+
+ if you do not provide a dependency array, every scheduled useEffect is executed. This means that after every
+  render cycle, every effect defined in the corresponding component is executed one after the other based 
+  on the positioning in the source code.
+
+  // second argument example can be found in EffectWithDependency.js
+
+  //cleanup functions
+  example and explanation included in CleanupProblem and CleanupSolution component.

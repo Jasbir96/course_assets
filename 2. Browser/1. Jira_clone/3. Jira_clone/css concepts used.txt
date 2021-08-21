@@ -1,0 +1,13 @@
+1- border box
+2- margin and padding
+3- background color and color
+4- width and height
+5- display
+6- flex and justify-content
+7- border and border-radius
+8- text-align
+9- font styling and text-decoration
+10- overflow 
+11- position
+12- opacity
+13- media queries

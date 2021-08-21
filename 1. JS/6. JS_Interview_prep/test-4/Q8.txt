@@ -1,0 +1,10 @@
+// Create a function using map that returns an array like object of all the arguments passed to it.
+// Solution:
+function f(...a) {
+  let m = new Map();
+  for (x in a) {
+    m.set(x, a[x]);
+  }
+  return m;
+}
+console.log(f(1, 2, 3));

@@ -1,0 +1,105 @@
+
+==========================Module - 1===========================
+-----------------JS---------------------
+output statements => console, alert
+comments
+let and dynamic behavior 
+operators
+data types
+loops
+strict mode and non strict mode 
+Functions and Function expressions AND IIFE and arrow functions,arguments 
+Arrays
+Objects
+Strings & template Strings
+type coercion (coercion is implicit, cast is explicit, and conversion is any of them),nan,infinity,truthy &falsy value
+this, call, apply, bind
+json => parse and stringify
+error handling
+everything is object or primitive 
+
+es6 ds => map, set, symbol, proxies
+es6 => deconstruction and spread operators and rest parameters
+
+
+------------------functional programming-----------------
+intro
+pure functions 
+mutations and side effects
+higher order functions 
+map filter and reduce
+polyfill
+currying and partial application
+
+
+-----------oops------------
+
+import and export
+Module system => commonjs and amd
+prototypal inheritance
+bigint
+Function constructor,Object.create,classes and new, instance of , typeof , 
+mutable and non-mutable Objects
+
+-----------------------------memory-------------------
+scope => block, Function, global, lexical
+variables => var, let, const
+closure
+execution context 
+hoisting
+global Object,window object
+shallow copy and deep copy 
+null vs undefined vs undeclared
+
+
+
+---------------------async------------------------------
+event loop and async architecture
+setTimeout and setInterval
+callbacks
+promises => then catch finally resolve reject create promise 
+microtasks
+async await
+generators,yield
+
+
+=================================Module - 2=============================
+
+
+---------------------------html---------------------
+
+html basics
+async defer
+progressive rendering
+srcset
+
+---------------------------css-------------------------
+css selectors, combinators
+how css works
+cascading, inheritance & specificity 
+box model, block and inline elements, overflow,background, height and width, positioning, stacking index(z-index),flex box, display, responsive,animation and keyframes, transform and translate, min-height and min-width, different types of units
+display:none vs opacity:0  
+BEM
+
+------------------------------dom------------------------
+dom tree and manipulation
+cloning dom Objects
+events => delegation, bubbling and capturing
+custom events
+Ui events 
+throttling and debouncing 
+cors, csrf, same-site policy 
+
+load vs domcontentloaded
+blob
+
+
+websocket
+fetch, xmlhttprequest, axios 
+forms => http verbs, multipart data, ajax requests, image and file upload 
+
+-----------------------------BOM-------------------
+
+storage=> cookies, local storage, session storage, indexeddb, cache
+
+bom apis=> drag and drop, navigator ,notification,service worker,web worker ,canvas ,media recorder,media stream,geolocation,file reader and file, location  

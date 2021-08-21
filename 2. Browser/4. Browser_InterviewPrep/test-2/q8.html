@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas></canvas>
+  <script>
+      // Q- Use canvas to create mouse selection as in windows -> box creation using canvas 
+      // Solution:
+      //   let drag = false;
+      //   let rectStartX, rectStartY;
+      //   let canvas = document.querySelector("canvas");
+      //   let ctx = canvas.getContext("2d");
+      //   canvas.width = window.innerWidth;
+      //   canvas.height = window.innerHeight;
+      //   document.addEventListener("mousedown", function (e) {
+      //     drag = true;
+      //     rectStartX = e.clientX;
+      //     rectStartY = e.clientY;
+      //   });
+
+      //   document.addEventListener("mouseup", function (e) {
+      //     drag = false;
+      //     rectStartX = undefined;
+      //     rectStartY = undefined;
+      //   });
+      //   document.addEventListener("mousemove", function (e) {
+      //     if (drag && rectStartX && rectStartY) {
+      //       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      //       ctx.fillRect(rectStartX, rectStartY, e.clientX-rectStartX, e.clientY-rectStartY);
+      //     }
+      //   });
+  </script>
+</body>
+
+</html>

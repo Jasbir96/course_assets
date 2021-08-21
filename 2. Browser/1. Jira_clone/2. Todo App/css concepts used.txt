@@ -1,0 +1,12 @@
+1- border-box (box model)
+2- margin and padding (box model)
+3- font styling 
+4- background color
+5- color
+6- calc
+7- width and height
+8- text align
+9- border
+10- outline 
+11- list style 
+12- media queries (responsive)

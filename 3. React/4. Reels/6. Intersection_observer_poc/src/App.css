@@ -1,0 +1,20 @@
+body{
+    background-color: lightgreen;
+}
+.videos
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-styles
+{
+    margin-bottom: 10%;
+    margin-top: 10%;
+    border:5px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:85vh;
+    background-color: aquamarine;
+}

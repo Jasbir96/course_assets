@@ -1,0 +1,50 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this version of camera we will improve on camera v3 and add the zoom in and out functionality as well as UI. -->
+
+<!-- C1 -->
+<!-- Steps involved: -->
+<!-- 1- Copy all the code from camera v2. 
+2- Add a div with class zoom and inside it 2 buttons with id's in and out. Style these in css.
+3- Get the reference of these 2 buttons in the script. Also create 3 variables - maxZoom, minZoom and currZoom
+4- Now add click event listener to these 2 buttons. We want to do 2 things on click of any of these buttons
+    a- Zoom in or out the video feed in the UI 
+    b- Store the zoom level globally
+  To zoom we can easily use transfrom:scale() property of css and manipulate it using js
+5- Last step is to use currZoom value and actually zoom the image when capturing the picture (Remember this is digital zoom and not optical hence the image will get blurry on zooming). To do we simply have to zoom the canvas on which image is being drawn but here lies a problem, canvas gets zoomed from its origin and by default the origin is top left corner, we dont want that, we need the origin to be at the centre of the canvas. So first we will shift the origin of canvas to centre, zoom it then shift back the origin(shifting the origin 
+also shifts the image so when we shift to centre a part of image was gone from the canvas so origin 
+has to be set back again to top left after zooming) and then capture the image.-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera - v4</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="video-container">
+      <!-- C4.2  -->
+      <!-- It is important to write transform css here because then only we will be able to get it using element.style.transform in js -->
+      <video autoplay style="transform: scale(1);"></video>
+    </div>
+    <button id="record-video"><div id="record-div"></div></button>
+    <button id="click-picture"><div id="click-div"></div></button>
+    <div class="filter-container">
+      <div style="background-color: #f4a2613d" class="filter"></div>
+      <div style="background-color: #e85d0440" class="filter"></div>
+      <div style="background-color: #ad5d6d7a" class="filter"></div>
+      <div style="background-color: #2195f323" class="filter"></div>
+      <div style="background-color: #4caf4f31" class="filter"></div>
+      <div class="filter"></div>
+    </div>
+    <!-- C2.1  -->
+    <div class="zoom">
+      <button id="in">+</button>
+      <button id="out">-</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

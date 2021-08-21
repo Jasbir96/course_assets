@@ -1,0 +1,11 @@
+.parent{
+    width: 37vw;
+    height: 50vh;
+    display: flex;
+}
+.videoel{
+    width: 40%;
+}
+.child{
+    width: 60%;
+}

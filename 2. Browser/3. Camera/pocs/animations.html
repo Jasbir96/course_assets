@@ -1,0 +1,109 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this POC we will see learn to animate html elements using css (keyframes)  -->
+
+<!-- C1 -->
+
+<!-- Steps involved:
+1- Create basic html and add a 3 divs in the body. Give them class box-1, box-2 and box-3.
+2- We will be using style tag to write css. First make all divs small boxes.
+3- Create 3 animations using keyframes and attach them to these 3 boxes using the box-1 to box-3 classes. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* C2.2  */
+      div {
+        height: 6rem;
+        width: 6rem;
+        margin: 8rem;
+      }
+
+      /* C4.1  */
+      .box-1 {
+        /* We are setting here which animation should run on this element and for how many seconds  */
+        /* syntax:  */
+            /* animation: name-of-animation animation-duration  */
+        animation: scaleUp 2s;
+        /* This property tells that the element should remain the way it ended with animation for example 
+        /* here element is scaling up so after the animation 
+        /* is finished the element should remain scaled up  */ 
+        animation-fill-mode: forwards;
+        background-color: #c23616;
+      }
+      /* C4.2  */
+      .box-2 {
+        background-color: #192a56;
+        /* This is setting animation its duration and how many time animation should repeat( here it is repeating 10 times ) */
+        animation: moveRightAndBack 1s 10;
+        /* This property helps to start the animation after some seconds instead starting as soon as the element loads  */
+        animation-delay: 3s;
+      }
+
+      /* C4.3  */
+      .box-3 {
+        background-color: #2f3640;
+        /* Here the animation will repeat infinitely  */
+        animation: fadeAway 0.5s infinite;
+        animation-delay: 5s;
+      }
+
+      /* C3.1 */
+      /* keyframes are used to create animations. 
+    Syntax : @keyframes animation-name{
+        some-percent-level{
+            what element should look like at this percentage of animation 
+        }
+    } */
+
+      /* C3.2  */
+      /* This animates the element from its initial shape to 2x of its size   */
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(2);
+        }
+      }
+
+      /* C3.3  */
+      /* This animates the element to move right 800px and then come back to its initial position  */
+      @keyframes moveRightAndBack {
+        0% {
+          transform: translateX(0px);
+        }
+        50% {
+          transform: translateX(800px);
+        }
+        100% {
+          transform: translateX(0px);
+        }
+      }
+
+      /* C3.4 */
+      /* This animates the element to disappear */
+      @keyframes fadeAway {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      } 
+    </style>
+  </head>
+  <body>
+    <!-- C2.1 -->
+    <div class="box-1"></div>
+    <div class="box-2"></div>
+    <div class="box-3"></div>
+  </body>
+</html>

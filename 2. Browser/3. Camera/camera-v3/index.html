@@ -1,0 +1,51 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this version of camera we will improve on camera v2 and add the functionality to filters -->
+
+<!-- C1 -->
+<!-- Steps involved: -->
+<!-- 1- Copy all the code from camera v2.
+2- Get reference of all filters in the script and attach click event handler on them. Create a global variable called 
+filter and set it to empty string. Now in the event handler of filter we want 2 things (Remember filter only works on 
+pictures):
+    a- To store which filter is being used in global filter variable so that we can apply that on time of capturing the 
+    picture.
+    b- To actually show filter on UI
+3- Create 2 functions:
+    a- addFilterToScreen: This will add the filter on the UI 
+    b- removeFilter: This will remove filter from UI
+4- We will have one bug that the filter we are showing on the UI will 
+hide the buttons and filter UI elements below it, so we have to give them a higher z-index
+5- We will also call removeFilter whenever we will record video because filters are not valid 
+for videos in our app
+6-Last thing we have to do is actually apply filter to the picture that is being taken(Remember filter colors 
+should have opacity less than 1 something like 0.3 or 0.4 so that original image is actually visible). 
+To do this we will imporve our capture function, now it will take filter as argument-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera - v3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="video-container">
+      <video autoplay></video>
+    </div>
+    <button id="record-video"><div id="record-div"></div></button>
+    <button id="click-picture"><div id="click-div"></div></button>
+
+    <div class="filter-container">
+       <div style="background-color: #f4a2613d" class="filter"></div>
+      <div style="background-color: #e85d0440"  class="filter"></div>
+      <div style="background-color: #ad5d6d7a"  class="filter"></div>
+      <div style="background-color: #2195f323"  class="filter"></div>
+      <div style="background-color: #4caf4f31"  class="filter"></div>
+      <div  class="filter"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

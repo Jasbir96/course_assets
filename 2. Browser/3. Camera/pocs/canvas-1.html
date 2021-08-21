@@ -1,0 +1,96 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this POC we will see learn to use canvas api and draw paths and shapes  -->
+
+<!-- C1 -->
+
+<!-- Steps involved:
+1- Create basic html and add a canvas element in the body. Add script and reference the canvas element in JS.
+2- Set the canvas to cover the entire screen size. You can do this by using css together with JS. In JS using the canvas reference set its height and width to window's inner height and width. In css, first set the body's margin to 0 and set canvas display to block 
+3-Get canvas context and draw paths and shapes -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shapes</title>
+    <!-- C2.5 -->
+    <style>
+      /* These both css style together with canvas.width and canvas.height property is important to make canvas full screen  */
+      /* Note do not use css to set height and width as it stretches the canvas instead of increasing the size in correct ratio  */
+
+      body {
+        margin: 0;
+      }
+
+      /* this property removes the scrollbars when canvas is set to full width  */
+      /* why it does so is not found (usage taken from stackoverflow) */
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- C2.1  -->
+    <canvas></canvas>
+    <script>
+      // C2.2
+      let canvas = document.querySelector("canvas");
+
+      // C2.3
+      // setting the height and width of canvas to window's height and width
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // C2.4
+      //   The <canvas> element creates a fixed-size drawing surface that exposes one or more rendering contexts, which are used to create and manipulate the content shown. In this POC, we focus on the 2D rendering context.
+
+      // Here is how we get access to 2d context of our canvas element we are going to use this to draw on canvas
+      let ctx = canvas.getContext("2d");
+
+      // C3.1
+      // canvas follows a grid system of x,y coordinate with origin being at top left corner. x increases from moving left to right and y increase in moving from top to bottom and vice versa
+
+      //C3.2
+      // beginPath method creates a new path everytime its called
+
+      //C3.3
+      //the moveTo function just moves the drawing cursor without actually drawing anything, to draw you have to call lineTo or functions like fillRect to draw shape
+      //the lines you draw using lineTo will be only visible after you call stroke method
+
+      //C3.4
+      // In this example we are drawing a checkbox and then drawing a blue-green tick on it, after you have taught this in class you can give a break point if you want and ask them to draw a red cross.
+
+      //C3.5
+      // When the current path is empty, such as immediately after calling beginPath(), or on a newly created canvas, the first path construction command is always treated as a moveTo(), regardless of what it actually is. For that reason, you will almost always want to specifically set your starting position after resetting a path.
+
+      // C4.1
+      // This function creates a rectangle at given x,y of given height and width
+      ctx.strokeRect(100, 100, 800, 800);
+
+      // C4.2
+      // first path
+      ctx.beginPath();
+      ctx.moveTo(100, 500);
+      //setting which color lines to draw
+      ctx.strokeStyle = "blue";
+      // setting the width of lines to draw
+      ctx.lineWidth = 80;
+      ctx.lineTo(400, 850);
+      // Stroke function draws out the lines in current path
+      ctx.stroke();
+
+      // Second path
+      ctx.beginPath();
+      ctx.moveTo(400, 800);
+      ctx.strokeStyle = "green";
+      ctx.lineTo(1100, 300);
+      // C4.3
+      // In this example you'll see that one line is blue and other is green, this is because for each line we create a path and set the color and then call stroke so suppose if we remove the second beginPath call all the lines will be in same path so when we change the line color to green and call stroke , both lines will be in same path and will get green
+      ctx.stroke();
+    </script>
+  </body>
+</html>

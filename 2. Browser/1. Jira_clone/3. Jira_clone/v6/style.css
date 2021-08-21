@@ -1,0 +1,245 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  background-color: #333;
+  height: 12vh;
+  display: flex;
+}
+.grid {
+  padding: 2rem;
+  background-color: #f2f2f2;
+  min-height: 88vh;
+  /* for v6 => 1 (tickets ko wrap kr rhe taki wo multiple lines me appear ho) */ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.filter-container,
+.add-delete-container {
+  margin-top: 2.1vh;
+  margin-left: 8vw;
+  border-radius: 3px;
+  height: 7.8vh;
+  display: flex;
+  background-color: #444;
+}
+
+.filter-container {
+  width: 18vw;
+}
+
+.add-delete-container {
+  width: 9vw;
+}
+
+.filter .add,
+.delete {
+  height: 100%;
+}
+.filter {
+  width: 25%;
+}
+
+.add,
+.delete {
+  width: 50%;
+}
+
+.pink-color-btn,
+.blue-color-btn,
+.black-color-btn,
+.green-color-btn {
+  border-radius: 3px;
+  display: block;
+  width: 34%;
+  height: 34%;
+  margin-left: 33%;
+  margin-top: 33%;
+}
+
+/*  filter and modal colours from v2*/
+
+.green-color-btn,
+.modal-green-filter {
+  background-color: #91e6c7;
+}
+
+.pink-color-btn,
+.modal-pink-filter {
+  background-color: #d595aa;
+}
+
+.blue-color-btn,
+.modal-blue-filter {
+  background-color: #5ecdde;
+}
+
+.black-color-btn,
+.modal-black-filter {
+  background-color: #2f2f2f;
+}
+
+.action-btn {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 0.7rem;
+  font-size: 2rem;
+}
+
+.filter:hover,
+.add-delete-container .action-btn:hover {
+  background-color: #393939;
+}
+.active {
+  background-color: #393939;
+}
+
+/* modal css from v2 */
+.modal {
+  box-shadow: 0px 0px 50px 5px;
+  height: 18rem;
+  position: absolute;
+  width: 35rem;
+  background: white;
+  display: flex;
+  top: 10rem;
+  left: calc((100vw - 35rem) / 2);
+}
+
+.task-to-be-added {
+  outline: none;
+  width: 70%;
+  overflow: auto;
+}
+
+.modal-priority-list {
+  width: 30%;
+  background-color: #444;
+}
+
+.task-to-be-added,
+.modal-priority-list {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  padding: 3rem;
+}
+
+.modal-filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-filter {
+  width: 100%;
+  height: 20%;
+  opacity: 0.65;
+}
+
+.modal-filter:hover {
+  opacity: 1;
+}
+
+.modal-filter-active {
+  border: 5px solid;
+  opacity: 1;
+}
+
+
+.ticket {
+  margin: 1rem;
+  height: 9rem;
+  width: 16rem;
+  background-color: white;
+}
+
+.ticket-color {
+  height: 6%;
+  width: 100%;
+}
+
+.ticket-color-blue {
+  background-color: #5ecdde;
+}
+.ticket-color-black {
+  background-color: #2f2f2f;
+}
+.ticket-color-green {
+  background-color: #91e6c7;
+}
+.ticket-color-pink {
+  background-color: #d595aa;
+}
+
+.ticket-id {
+  color: #989393;
+  padding-top: 3%;
+  padding-left: 3%;
+  display: block;
+  width: 100%;
+  height: 15%;
+  margin-bottom: 0.7rem;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.task {
+  font-family: "Raleway", sans-serif;
+  height: 76%;
+  width: 100%;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  overflow-y: auto;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+  text-decoration: none;
+}
+
+/* for v6 => 2 (adding media queries) */
+
+@media only screen and (max-width: 1024px) {
+  .filter-container {
+    width: 40vw;
+  }
+  .add-delete-container {
+    width: 25vw;
+  }
+  .add span,
+  .delete span {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .add span,
+  .delete span {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-container {
+    width: 50vw;
+  }
+  .add-delete-container {
+    width: 25vw;
+  }
+  .add span,
+  .delete span {
+    font-size: 1.8rem;
+  }
+}

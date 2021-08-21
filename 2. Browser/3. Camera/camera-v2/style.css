@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* C2.2 */
+/* Height and width of both btns have been changed from 4 rem to 6rem  */
+
+#record-video {
+  position: fixed;
+  right: 6rem;
+  top: 36vh;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  /* C2.3  */
+  /* Border of both buttons have been set to 8px solid white  */
+  border: 8px solid white;
+  /* C2.4  */
+  /* Background of both btns have been set to black  */
+  background: black;
+}
+
+#click-picture {
+  position: fixed;
+  right: 6rem;
+  top: 50vh;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: 8px solid white;
+  background: black;
+}
+
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: black;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}
+
+/* C3  */
+#record-div,
+#click-div {
+  height: 70%;
+  width: 80%;
+  /* margin auto so both div can be centered */
+  margin: auto;
+  border-radius: 50%;
+}
+
+#record-div {
+  background: red;
+}
+
+#click-div {
+  background: white;
+}
+
+/* C4.2 */
+/* whichever element has this calls the animation will run on it infinitely */
+.recording-animation {
+  animation: shrinkInOut 0.8s infinite;
+}
+
+/* C4.3  */
+/* whichever element has this calls the animation will run on it only once  */
+.capture-animation {
+  animation: shrinkInOut 1s;
+}
+
+/* C4.1 */
+/* This animation first scales the element from 1 to 1.2 and then back to 1  */
+@keyframes shrinkInOut {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.filter-container {
+  border: 1px solid white;
+  top: 12vh;
+  height: 60vh;
+  width: 5.5vw;
+  position: fixed;
+  /* We have added flex to make it responsive as we will give flex direction row on smaller screen sizes  */
+  display: flex;
+  flex-direction: column;
+  left: 5.3vw;
+}
+
+.filter {
+  border: 1px solid white;
+  height: 20%;
+  /* C7.2 */
+  /* all the filter options have same background image  */
+  background: url(https://images.unsplash.com/photo-1591526038358-0e3d334fb8c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100);
+  /* this is to blend the image background and background color  */
+  background-blend-mode: color-burn;
+  /* this is to cover the entire filter div  */
+  background-size: cover;
+}

@@ -1,0 +1,67 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this version of camera we will improve on camera v6 and add functionality to download and delete button Also style the gallery page. -->
+
+<!-- C1 -->
+<!-- Steps involved:
+1- Create deleteMediaFromGallery function in dbScript which takes mId as argument and deletes the required media from inedexedDb.
+2- Create a deleteBtn handler in dbScript which gets the mId from its container and calls deleteMediaFromGallery and also removes the entire media with its container from the screen. Attach this handler to deleteBtn in both image and video cases.
+3- Next we need to create a click handler for download button. And then attach that to downloadBtn in both cases.This is to be done in dbScript.
+4- Add a button in index.html which takes to gallery 
+5- Finally Add a back button in gallery page and style it, make it responsive-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera - v7</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="video-container">
+      <video autoplay style="transform: scale(1)"></video>
+    </div>
+    <button id="record-video"><div id="record-div"></div></button>
+    <button id="click-picture"><div id="click-div"></div></button>
+
+    <div class="filter-container">
+      <div style="background-color: #f4a2613d" class="filter"></div>
+      <div style="background-color: #e85d0440" class="filter"></div>
+      <div style="background-color: #ad5d6d7a" class="filter"></div>
+      <div style="background-color: #2195f323" class="filter"></div>
+      <div style="background-color: #4caf4f31" class="filter"></div>
+      <div class="filter"></div>
+    </div>
+
+    <div class="zoom">
+      <button id="in">+</button>
+      <button id="out">-</button>
+    </div>
+
+    <!-- C5.1.A  -->
+    <button id="gallery-button">
+      <span class="material-icons" style="font-size: 2rem; color: white">
+        photo
+      </span>
+    </button>
+    <script src="dbScript.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // C5.1.B
+      let galleryBtn = document.querySelector("#gallery-button");
+      // The onclick handler uses location object and change it from index.html to gallery.html in the same domain
+      galleryBtn.addEventListener("click", function () {
+        location.assign("gallery.html");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!-- Comments are numbered in the form CO to Cn. -->
+
+<!-- C0 -->
+<!-- In this POC we will learn to images on canvas. To do this we have brought over the code from canvas-1 POC and deleted the paths and shapes -->
+
+<!-- C1 -->
+
+<!-- Steps involved:
+1- No new steps are involved just using the same code and calling functions which draw images-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The mona lisa</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      let canvas = document.querySelector("canvas");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let ctx = canvas.getContext("2d");
+
+      //   C2.1
+      //   To draw an Image we can use an html image or video element and many other. 
+
+      //   C2.2
+      // So first create an image element
+      let img = document.createElement("img");
+      //   Set image src to it
+      img.src = "c3.jpg";
+      //Now this step is imp we can only use html image element to draw after it has loaded so, on image load we call the draw function
+      img.onload = function () {
+        // C2.3
+        //   this function draws a given image at given x,y coordinate
+        ctx.drawImage(img, 0, 0);
+        // we dont actually want to add this image element to dom so we will remove it
+        img.remove();
+      };
+    </script>
+  </body>
+</html>

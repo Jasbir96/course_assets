@@ -1,0 +1,29 @@
+video{
+    height: 50vh;
+    width: 100%;
+}
+.demo-container
+{
+    display: flex;
+}
+.video-container{
+    width: 60%;
+    height: 60vh;
+}
+.text-container{
+    width:30%
+}
+.m-video{
+    height: 100%;
+}
+@media only screen and (max-width: 600px) {
+   .makeStyles-root-6{
+       width: 90vw !important;
+   }
+   .video-container{
+       display: none !important;
+   }
+   .text-container{
+    width:90%
+}
+  }
